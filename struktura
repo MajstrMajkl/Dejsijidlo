@@ -1,0 +1,13 @@
+obed-web/
+│
+├── frontend/
+│   ├── index.html
+│   ├── success.html
+│   └── cancel.html
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   └── .env.example
+│
+└── README.md
