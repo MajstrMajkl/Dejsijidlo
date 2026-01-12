@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Objednávka oběda</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: auto; }
+    .product { border: 1px solid #ccc; padding: 20px; margin: 20px 0; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<h1>Vyberte si oběd</h1>
+
+<div class="product">
+  <h2>Svíčková</h2>
+  <p>Cena: 152 Kč</p>
+  <button onclick="buy('svickova')">Objednat</button>
+</div>
+
+<div class="product">
+  <h2>Řízek</h2>
+  <p>Cena: 134 Kč</p>
+  <button onclick="buy('rizek')">Objednat</button>
+</div>
+
+<script>
+  const stripe = Stripe("pk_test_51SokqCDepSVeosDVhMXuKB2YXBdyeFSHck5GJldiL44WDbqmOTrnwqplojJ6hgIz5TdWN9rApXBD4HHQspW3NcWd00MDVUoprZ");
+
+  function buy(product) {
+    fetch("https://VLOŽ_BACKEND_URL/create-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ product })
+    })
+    .then(res => res.json())
+    .then(data => stripe.redirectToCheckout({ sessionId: data.id }));
+  }
+</script>
+
+</body>
+</html>
