@@ -28,8 +28,8 @@ app.post("/create-session", async (req, res) => {
       },
       quantity: 1
     }],
-    success_url: "https://TVŮJ_GITHUB_PAGES_URL/success.html",
-    cancel_url: "https://TVŮJ_GITHUB_PAGES_URL/cancel.html"
+    success_url: "https://majstrmajkl.github.io/Dejsijidlo/success.html",
+    cancel_url: "https://majstrmajkl.github.io/Dejsijidlo/cancel.html"
   });
 
   res.json({ id: session.id });
